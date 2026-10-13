@@ -8,5 +8,11 @@ public class PcPart{
 	 System.out.println(cpuName);
 	 System.out.println(cpuPrice);
 	 System.out.println(isPurchased);
-	}
+   String gpuName="RTX 3060";
+   double gpuPrice= 25000.00;
+   double totalBudget= cpuPrice+gpuPrice;
+   System.out.println(totalBudget);
+   boolean isBudget= totalBudget< 50000;
+   System.out.println(isBudget);
+    }  
 }
