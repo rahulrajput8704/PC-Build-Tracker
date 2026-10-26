@@ -22,51 +22,36 @@ public class Pcbuild{
     }
     
     public static void main(String[] args) {
-        double totalBudget;
         
+        int budget;
         Scanner sc=new Scanner(System.in);
         System.out.println("-------Welcome User!-------");
         System.out.println();
+        System.out.println("Enter your budget");
+        budget=sc.nextInt();
         
-        System.out.println("Please enter your Budget");
-        double Budget=sc.nextDouble();
-        System.out.println("your Budget is: "+Budget);
+        String[] parts={"cpu: ryzen 5 5600","Gpu: Rtx 3060",
+            "ram:Corsoir 16GB","Motherboard:MSI B550M",
+            "SSD:Crucial P3","PSU:Corsoir CV550"};
         
-        System.out.println("Enter Cpu price");
-        double a= sc.nextDouble();
-	Pcbuild cpu=new Pcbuild("Cpu:Ryzen 5 5600",a);
         
-        System.out.println("Enter Gpu price");
-        double b=sc.nextDouble();
-        Pcbuild gpu=new Pcbuild("Gpu:RTX 3060",b);
-        
-        System.out.println("Enter Ram price");
-        double c= sc.nextDouble();
-        Pcbuild Ram=new Pcbuild("Ram:corsoir 16Gb",c);
-        
-        System.out.println("Enter motherboard price");
-        double d=sc.nextDouble();
-        Pcbuild MotherBoard=new Pcbuild("M.board: MSI B550 M",d);
-        
-        System.out.println("Enter SSD price");
-        double e=sc.nextDouble();
-        Pcbuild SSD= new Pcbuild("SSD: Crucial p3",e);
-        
-        System.out.println("Enter PSU price");
-        double f=sc.nextDouble();
-        Pcbuild PSU= new Pcbuild("PSU:Corsoir Cv550",f);
-        
-        totalBudget=a+b+c+d+e+f;
-        
-        if(totalBudget<=Budget){
-            System.out.println("yes you can build pc");
-        }else{
-            System.out.println("Budget is exceeding by: "+(totalBudget-Budget));
+        Pcbuild[] build = new Pcbuild[6];
+int total = 0;
+for(int i=0; i<build.length; i++){
+    System.out.print("Enter price for "+parts[i]+" Rs- ");
+    int p = sc.nextInt(); 
+    build[i] = new Pcbuild(parts[i], p); 
+    total += build[i].getprice();
+}
             
+        
+        System.out.println("Total budget is: "+total);
+        
+        if(total<=budget){
+            System.out.println("yes you can build pc in this budget");
+        }else{
+            System.out.println("your budget is exceeding by:"+(total-budget));
         }
         
-        
-        
-}
-    
+    }
 }
